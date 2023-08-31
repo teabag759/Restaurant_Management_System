@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace RMS
 {
-    public partial class SampleAdd : Form
+    public partial class SampleView : Form
     {
-        public SampleAdd()
+        public SampleView()
         {
             InitializeComponent();
         }
 
-        public virtual void btnClose_Click(object sender, EventArgs e)
+        public virtual void btnAdd_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
 
-        public virtual void btnSave_Click(object sender, EventArgs e)
+        public virtual void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -79,6 +79,12 @@
     <Compile Include="SampleAdd.Designer.cs">
       <DependentUpon>SampleAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="SampleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleView.Designer.cs">
+      <DependentUpon>SampleView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="SampleAdd.resx">
       <DependentUpon>SampleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleView.resx">
+      <DependentUpon>SampleView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -174,6 +183,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payment-terminal %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

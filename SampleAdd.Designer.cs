@@ -34,7 +34,7 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -61,7 +61,7 @@
             // 
             // guna2Panel3
             // 
-            this.guna2Panel3.Controls.Add(this.guna2Button2);
+            this.guna2Panel3.Controls.Add(this.btnClose);
             this.guna2Panel3.Controls.Add(this.btnSave);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel3.FillColor = System.Drawing.Color.Gainsboro;
@@ -109,25 +109,27 @@
             this.btnSave.Size = new System.Drawing.Size(104, 45);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "SAVE";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // guna2Button2
+            // btnClose
             // 
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.BackColor = System.Drawing.Color.Gainsboro;
-            this.guna2Button2.BorderRadius = 21;
-            this.guna2Button2.CustomizableEdges.TopRight = false;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(137, 14);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(104, 45);
-            this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "CLOSE";
+            this.btnClose.AutoRoundedCorners = true;
+            this.btnClose.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnClose.BorderRadius = 21;
+            this.btnClose.CustomizableEdges.TopRight = false;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(137, 14);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(104, 45);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "CLOSE";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SampleAdd
             // 
@@ -152,13 +154,12 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         public System.Windows.Forms.Label label1;
         public Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         public Guna.UI2.WinForms.Guna2Button btnSave;
-        public Guna.UI2.WinForms.Guna2Button guna2Button2;
+        public Guna.UI2.WinForms.Guna2Button btnClose;
+        public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        public Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }
