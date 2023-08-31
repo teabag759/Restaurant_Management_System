@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RMS
 {
     internal class MainClass
@@ -14,7 +15,7 @@ namespace RMS
         public static SqlConnection con = new SqlConnection(con_string);
 
 
-        //Methord th check user validation 
+        //Methord to check user validation 
 
         public static bool IsVaildUser(string user, string pass) {
         
@@ -28,9 +29,23 @@ namespace RMS
 
             if (dt.Rows.Count > 0) { 
                 isValid = true;
+                USER = dt.Rows[0]["uName"].ToString();
             }
 
             return isValid;
         }
+
+
+
+        //Create property for username
+        public static string user;
+        public static string USER 
+        {
+            get { return user; }
+            private set { user = value; }
+        }
+
+
+        
     }
 }
