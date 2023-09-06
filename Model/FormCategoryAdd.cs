@@ -9,23 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //using NamespaceOfSampleAdd;
 
-namespace RMS
+namespace RMS.Model
 {
-    public partial class SampleAdd : Form
+    public partial class FormCategoryAdd : SampleAdd
     {
-        public SampleAdd()
+        public FormCategoryAdd()
         {
             InitializeComponent();
-        }
-
-        public virtual void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        public virtual void btnSave_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
