@@ -1,11 +1,9 @@
-﻿using Guna.UI2.WinForms;
-using RMS.Model;
+﻿using RMS.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,33 +12,40 @@ using System.Windows.Forms;
 
 namespace RMS.View
 {
-    public partial class FormCategoryView : SampleView
+    public partial class FormProductView : SampleView
     {
-        public FormCategoryView()
+        public FormProductView()
         {
             InitializeComponent();
         }
 
-        public void GetData()
-        {
-            string qry = "Select * From category where catName like '%" + txtSearch.Text + "%' ";
-            ListBox lb = new ListBox();
-            lb.Items.Add(dgvid);
-            lb.Items.Add(dgvName);
-
-            MainClass.LoadData(qry, guna2DataGridView1, lb);
-        }
-
-        private void FormCategoryView_Load(object sender, EventArgs e)
+        private void FormProductView_Load(object sender, EventArgs e)
         {
             GetData();
         }
 
+
+        public void GetData()
+        {
+            string qry = "select pID, pName, pPrice, CategoryID, c.catName from products p inner join category c on c.catID = p.CategoryID where pName like '%" + txtSearch.Text + "%' ";
+            ListBox lb = new ListBox();
+            lb.Items.Add(dgvid);
+            lb.Items.Add(dgvName);
+            lb.Items.Add(dgvPrice);
+            lb.Items.Add(dgvcatID);
+            lb.Items.Add(dgvcat);
+
+            MainClass.LoadData(qry, guna2DataGridView1, lb);
+        }
+
         public override void btnAdd_Click(object sender, EventArgs e)
         {
-            MainClass.BlurBackground(new Model.FormCategoryAdd());
-            //FormCategoryAdd frm = new FormCategoryAdd();
+            //adding blue effect
+            //FormTableAdd frm = new FormTableAdd();
             //frm.ShowDialog();
+
+            MainClass.BlurBackground(new Model.FormProductAdd());
+
             GetData();
         }
 
@@ -57,9 +62,12 @@ namespace RMS.View
                 guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
 
                 // this is change as we have to set form text properties before open
-                FormCategoryAdd frm = new FormCategoryAdd();
+                FormProductAdd frm = new FormProductAdd();
                 frm.id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
-                frm.txtName.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvName"].Value);
+                frm.cID = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvcatID"].Value);
+                //frm.txtName.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvName"].Value);
+                //frm.txtPrice.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvPrice"].Value);
+                //frm.cbCategory.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvcat"].Value);
                 MainClass.BlurBackground(frm);
                 GetData();
             }
@@ -72,7 +80,7 @@ namespace RMS.View
                 if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
-                    string qry = "Delete from category where catID = " + id + "";
+                    string qry = "Delete from products where pID = " + id + "";
                     Hashtable ht = new Hashtable();
                     MainClass.SQL(qry, ht);
 
@@ -82,9 +90,8 @@ namespace RMS.View
                     GetData();
                 }
 
-                
-            }
 
+            }
         }
     }
 }

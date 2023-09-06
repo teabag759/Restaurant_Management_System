@@ -27,10 +27,12 @@ namespace RMS.View
 
         public void GetData()
         {
-            string qry = "Select * From tables where tName like '%" + txtSearch.Text + "%' ";
+            string qry = "Select * From staff where sName like '%" + txtSearch.Text + "%' ";
             ListBox lb = new ListBox();
             lb.Items.Add(dgvid);
             lb.Items.Add(dgvName);
+            lb.Items.Add(dgvPhone);
+            lb.Items.Add(dgvRole);
 
             MainClass.LoadData(qry, guna2DataGridView1, lb);
         }
@@ -41,7 +43,7 @@ namespace RMS.View
             //FormTableAdd frm = new FormTableAdd();
             //frm.ShowDialog();
 
-            MainClass.BlurBackground(new FormTableAdd());
+            MainClass.BlurBackground(new Model.FormStaffAdd());
 
             GetData();
         }
@@ -58,10 +60,13 @@ namespace RMS.View
                 guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
                 guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
 
-                FormCategoryAdd frm = new FormCategoryAdd();
+                // this is change as we have to set form text properties before open
+                FormStaffAdd frm = new FormStaffAdd();
                 frm.id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
                 frm.txtName.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvName"].Value);
-                frm.ShowDialog();
+                frm.txtPhone.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvPhone"].Value);
+                frm.cbRole.Text = Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvRole"].Value);
+                MainClass.BlurBackground(frm);
                 GetData();
             }
 
@@ -73,7 +78,7 @@ namespace RMS.View
                 if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
-                    string qry = "Delete from tables where tID = " + id + "";
+                    string qry = "Delete from staff where staffID = " + id + "";
                     Hashtable ht = new Hashtable();
                     MainClass.SQL(qry, ht);
 
@@ -85,7 +90,6 @@ namespace RMS.View
 
 
             }
-
         }
     }
 }

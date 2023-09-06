@@ -1,9 +1,12 @@
-﻿using System;
+﻿using RMS.Model;
+using RMS.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -62,6 +65,22 @@ namespace RMS
         private void btnTables_Click(object sender, EventArgs e)
         {
             AddControls(new View.FormTableView());
+        }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormStaffView());
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormProductView());
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            FormPOS frm = new FormPOS();
+            frm.Show();
         }
     }
 }

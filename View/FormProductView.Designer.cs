@@ -1,6 +1,6 @@
 ﻿namespace RMS.View
 {
-    partial class FormStaffView
+    partial class FormProductView
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,9 @@
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dgvSno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvedit = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvdel = new System.Windows.Forms.DataGridViewImageColumn();
@@ -72,8 +73,9 @@
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvSno,
             this.dgvName,
-            this.dgvPhone,
-            this.dgvRole,
+            this.dgvPrice,
+            this.dgvcat,
+            this.dgvcatID,
             this.dgvid,
             this.dgvedit,
             this.dgvdel});
@@ -92,7 +94,7 @@
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowTemplate.Height = 35;
             this.guna2DataGridView1.Size = new System.Drawing.Size(1181, 470);
-            this.guna2DataGridView1.TabIndex = 6;
+            this.guna2DataGridView1.TabIndex = 7;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -132,17 +134,23 @@
             this.dgvName.Name = "dgvName";
             this.dgvName.ReadOnly = true;
             // 
-            // dgvPhone
+            // dgvPrice
             // 
-            this.dgvPhone.HeaderText = "Phone";
-            this.dgvPhone.Name = "dgvPhone";
-            this.dgvPhone.ReadOnly = true;
+            this.dgvPrice.HeaderText = "Price";
+            this.dgvPrice.Name = "dgvPrice";
+            this.dgvPrice.ReadOnly = true;
             // 
-            // dgvRole
+            // dgvcat
             // 
-            this.dgvRole.HeaderText = "Role";
-            this.dgvRole.Name = "dgvRole";
-            this.dgvRole.ReadOnly = true;
+            this.dgvcat.HeaderText = "Category";
+            this.dgvcat.Name = "dgvcat";
+            this.dgvcat.ReadOnly = true;
+            // 
+            // dgvcatID
+            // 
+            this.dgvcatID.HeaderText = "cID";
+            this.dgvcatID.Name = "dgvcatID";
+            this.dgvcatID.ReadOnly = true;
             // 
             // dgvid
             // 
@@ -175,13 +183,14 @@
             this.dgvdel.ReadOnly = true;
             this.dgvdel.Width = 50;
             // 
-            // FormStaffView
+            // FormProductView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1253, 691);
             this.Controls.Add(this.guna2DataGridView1);
-            this.Name = "FormStaffView";
-            this.Text = "FormStaffView";
+            this.Name = "FormProductView";
+            this.Text = "FormProductView";
+            this.Load += new System.EventHandler(this.FormProductView_Load);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.guna2DataGridView1, 0);
@@ -196,8 +205,9 @@
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvRole;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcatID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvid;
         private System.Windows.Forms.DataGridViewImageColumn dgvedit;
         private System.Windows.Forms.DataGridViewImageColumn dgvdel;
