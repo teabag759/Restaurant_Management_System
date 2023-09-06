@@ -634,10 +634,10 @@
             this.ucProduct1.id = 0;
             this.ucProduct1.Location = new System.Drawing.Point(3, 3);
             this.ucProduct1.Name = "ucProduct1";
-            this.ucProduct1.PCategory = 0;
+            this.ucProduct1.PCategory = 0.ToString();
             this.ucProduct1.PImage = ((System.Drawing.Image)(resources.GetObject("ucProduct1.PImage")));
             this.ucProduct1.PName = "Product Name";
-            this.ucProduct1.PPrice = 0;
+            this.ucProduct1.PPrice = 0.ToString();
             this.ucProduct1.Size = new System.Drawing.Size(222, 239);
             this.ucProduct1.TabIndex = 8;
             // 
@@ -646,10 +646,10 @@
             this.ucProduct2.id = 0;
             this.ucProduct2.Location = new System.Drawing.Point(231, 3);
             this.ucProduct2.Name = "ucProduct2";
-            this.ucProduct2.PCategory = 0;
+            this.ucProduct2.PCategory = 0.ToString();
             this.ucProduct2.PImage = ((System.Drawing.Image)(resources.GetObject("ucProduct2.PImage")));
             this.ucProduct2.PName = "Product Name";
-            this.ucProduct2.PPrice = 0;
+            this.ucProduct2.PPrice = 0.ToString();
             this.ucProduct2.Size = new System.Drawing.Size(222, 239);
             this.ucProduct2.TabIndex = 9;
             // 
@@ -658,10 +658,10 @@
             this.ucProduct3.id = 0;
             this.ucProduct3.Location = new System.Drawing.Point(459, 3);
             this.ucProduct3.Name = "ucProduct3";
-            this.ucProduct3.PCategory = 0;
+            this.ucProduct3.PCategory = 0.ToString();
             this.ucProduct3.PImage = ((System.Drawing.Image)(resources.GetObject("ucProduct3.PImage")));
             this.ucProduct3.PName = "Product Name";
-            this.ucProduct3.PPrice = 0;
+            this.ucProduct3.PPrice = 0.ToString();
             this.ucProduct3.Size = new System.Drawing.Size(222, 239);
             this.ucProduct3.TabIndex = 10;
             // 

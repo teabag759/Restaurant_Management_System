@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace RMS.View
         {
             guna2DataGridView2.BorderStyle = BorderStyle.FixedSingle;
             AddCategory();
+
+            ProductPanel.Controls.Clear();
+            LoadProducts();
         }
 
         private void AddCategory()
@@ -59,7 +63,7 @@ namespace RMS.View
 
         }
 
-        private void AddItems(int id, string name, string cat, string price, Image pimage)
+        private void AddItems(string id, string name, string cat, string price, Image pimage)
         {
             var w = new ucProduct()
             {
@@ -78,16 +82,40 @@ namespace RMS.View
 
                 foreach (DataGridViewRow item in guna2DataGridView2.Rows)
                 {
+                    //this will check it product already there then a one to quantity and update price
                     if (Convert.ToInt32(item.Cells["dgvid"].Value) == wdg.id)
                     {
                         item.Cells["dgvQty"].Value = int.Parse(item.Cells["dgvid"].ToString()) + 1;
-                        item.Cells["dgvQty"].Value = int.Parse(item.Cells["dgvid"].ToString()) + 1;
+                        item.Cells["dgvAmount"].Value = int.Parse(item.Cells["dgvQty"].ToString()) *
+                                                        double.Parse(item.Cells["dgvPrice"].ToString());
                     }
+
+                    //this line add new product
+                    guna2DataGridView2.Rows.Add(new object[] { 0, wdg.id, wdg.PName, 1, wdg.PPrice, wdg.PPrice });
                 }
             };
 
         }
 
+        // Getting product from database
+
+        private void LoadProducts()
+        {
+            string qry = "Select * from products inner join category on catID = CategoryID";
+            SqlCommand cmd = new SqlCommand(qry, MainClass.con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow item in dt.Rows) 
+            {
+                Byte[] imagearray = (byte[])item["pImage"];
+                byte[] imagebytearray = imagearray;
+
+                AddItems(item["pID"].ToString(), item["pName"].ToString(), item["catName"].ToString(),
+                    item["pPrice"].ToString(), Image.FromStream(new MemoryStream(imagearray)));
+            }
+        }
        
     }
 }
