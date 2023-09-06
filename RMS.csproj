@@ -77,6 +77,12 @@
     <Compile Include="Model\FormCategoryAdd.Designer.cs">
       <DependentUpon>FormCategoryAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\FormTableAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\FormTableAdd.Designer.cs">
+      <DependentUpon>FormTableAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleAdd.cs">
@@ -97,6 +103,12 @@
     <Compile Include="View\FormCategoryView.Designer.cs">
       <DependentUpon>FormCategoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormTableView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTableView.Designer.cs">
+      <DependentUpon>FormTableView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Model\FormCategoryAdd.resx">
       <DependentUpon>FormCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\FormTableAdd.resx">
+      <DependentUpon>FormTableAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormCategoryView.resx">
       <DependentUpon>FormCategoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTableView.resx">
+      <DependentUpon>FormTableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

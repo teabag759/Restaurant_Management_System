@@ -1,11 +1,9 @@
-﻿using Guna.UI2.WinForms;
-using RMS.Model;
+﻿using RMS.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,16 +12,22 @@ using System.Windows.Forms;
 
 namespace RMS.View
 {
-    public partial class FormCategoryView : SampleView
+    public partial class FormTableView : SampleView
     {
-        public FormCategoryView()
+        public FormTableView()
         {
             InitializeComponent();
         }
 
+        private void FormTableView_Load(object sender, EventArgs e)
+        {
+            // Create table 
+            GetData();
+        }
+
         public void GetData()
         {
-            string qry = "Select * From category where catName like '%" + txtSearch.Text + "%' ";
+            string qry = "Select * From tables where tName like '%" + txtSearch.Text + "%' ";
             ListBox lb = new ListBox();
             lb.Items.Add(dgvid);
             lb.Items.Add(dgvName);
@@ -31,14 +35,10 @@ namespace RMS.View
             MainClass.LoadData(qry, guna2DataGridView1, lb);
         }
 
-        private void FormCategoryView_Load(object sender, EventArgs e)
-        {
-            GetData();
-        }
-
         public override void btnAdd_Click(object sender, EventArgs e)
         {
-            FormCategoryAdd frm = new FormCategoryAdd();
+            //adding blue effect
+            FormTableAdd frm = new FormTableAdd();
             frm.ShowDialog();
             GetData();
         }
@@ -70,7 +70,7 @@ namespace RMS.View
                 if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
-                    string qry = "Delete from category where catID = " + id + "";
+                    string qry = "Delete from tables where tID = " + id + "";
                     Hashtable ht = new Hashtable();
                     MainClass.SQL(qry, ht);
 
@@ -80,7 +80,7 @@ namespace RMS.View
                     GetData();
                 }
 
-                
+
             }
 
         }

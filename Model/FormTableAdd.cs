@@ -11,37 +11,38 @@ using System.Windows.Forms;
 
 namespace RMS.Model
 {
-    public partial class FormCategoryAdd : SampleAdd
+    public partial class FormTableAdd : SampleAdd
     {
-        public FormCategoryAdd()
+        public FormTableAdd()
         {
             InitializeComponent();
         }
 
-        private void FormCategoryAdd_Load(object sender, EventArgs e)
+        private void FormTableAdd_Load(object sender, EventArgs e)
         {
-            this.guna2PictureBox1.Image = RMS.Properties.Resources.categories;
+            this.guna2PictureBox1.Image = RMS.Properties.Resources.chair;
         }
 
         public int id = 0;
+
         public override void btnSave_Click(object sender, EventArgs e)
         {
             string qry = "";
 
             if (id == 0) // insert
             {
-                qry = "Insert into category Values(@Name)";
+                qry = "Insert into tables Values(@Name)";
             }
             else  // else
             {
-                qry = "Update category Set catName = @Name where catID = @id";
+                qry = "Update tables Set tName = @Name where tID = @id";
             }
 
             Hashtable ht = new Hashtable();
             ht.Add("@id", id);
             ht.Add("@Name", txtName.Text);
 
-            if (MainClass.SQL(qry, ht) > 0) 
+            if (MainClass.SQL(qry, ht) > 0)
             {
                 guna2MessageDialog1.Show("Saved successfully..");
                 id = 0;

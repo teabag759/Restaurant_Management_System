@@ -45,5 +45,15 @@ namespace RMS
         {
             AddControls(new FormHome());
         }
+
+        private void btnCategories_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormCategoryView());
+        }
+
+        private void btnTables_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormTableView());
+        }
     }
 }

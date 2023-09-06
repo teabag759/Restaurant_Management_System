@@ -208,6 +208,7 @@
             this.btnTables.Text = "Tables";
             this.btnTables.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTables.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnTables.Click += new System.EventHandler(this.btnTables_Click);
             // 
             // btnProducts
             // 
@@ -264,6 +265,7 @@
             this.btnCategories.Text = "Categories";
             this.btnCategories.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCategories.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
             // 
             // btnHome
             // 
