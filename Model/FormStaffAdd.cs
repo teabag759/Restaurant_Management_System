@@ -8,25 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RMS
+namespace RMS.Model
 {
-    public partial class SampleView : Form
+    public partial class FormStaffAdd : SampleAdd
     {
-        public SampleView()
+        public FormStaffAdd()
         {
             InitializeComponent();
         }
-
-        public virtual void btnAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public virtual void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-    
     }
 }

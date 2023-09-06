@@ -38,8 +38,11 @@ namespace RMS.View
         public override void btnAdd_Click(object sender, EventArgs e)
         {
             //adding blue effect
-            FormTableAdd frm = new FormTableAdd();
-            frm.ShowDialog();
+            //FormTableAdd frm = new FormTableAdd();
+            //frm.ShowDialog();
+
+            MainClass.BlurBackground(new FormTableAdd());
+
             GetData();
         }
 

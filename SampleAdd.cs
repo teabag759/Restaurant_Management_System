@@ -26,5 +26,10 @@ namespace RMS
         {
 
         }
+
+        private void FormCategoryAdd_Load(object sender, EventArgs e)
+        {
+            this.guna2PictureBox1.Image = RMS.Properties.Resources.categories;
+        }
     }
 }

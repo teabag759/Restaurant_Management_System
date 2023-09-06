@@ -53,7 +53,7 @@
             this.txtName.PasswordChar = '\0';
             this.txtName.PlaceholderText = "";
             this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(214, 35);
+            this.txtName.Size = new System.Drawing.Size(251, 35);
             this.txtName.TabIndex = 0;
             // 
             // label2
@@ -69,11 +69,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 397);
+            this.ClientSize = new System.Drawing.Size(325, 397);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Name = "FormTableAdd";
             this.Text = "FormTableAdd";
+            this.Load += new System.EventHandler(this.FormTableAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

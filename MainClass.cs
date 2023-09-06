@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -127,6 +128,14 @@ namespace RMS
                 Background.FormBorderStyle = FormBorderStyle.None;
                 Background.Opacity = 0.5d;
                 Background.BackColor = Color.Black;
+                Background.Size = FormMain.Instance.Size;
+                Background.Location = FormMain.Instance.Location; 
+                Background.ShowInTaskbar = false;    
+                Background.Show();
+
+                Model.Owner = Background;
+                Model.ShowDialog(Background);
+                Background.Dispose();
             }
         }
 

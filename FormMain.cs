@@ -17,7 +17,14 @@ namespace RMS
             InitializeComponent();
         }
 
+        // for accessing FormMain
 
+        static FormMain _obj;
+
+        public static FormMain Instance
+        { 
+            get {  if ( _obj == null ) { _obj = new FormMain(); } return _obj; }
+        }
 
         //Methord to add Controls in Main Form
         public void AddControls(Form f)
@@ -39,6 +46,7 @@ namespace RMS
         private void FormMain_Load(object sender, EventArgs e)
         {
             lblUser.Text = MainClass.USER;
+            _obj = this;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
