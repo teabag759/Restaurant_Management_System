@@ -21,6 +21,9 @@ namespace RMS.View
             InitializeComponent();
         }
 
+        public int MainID = 0;
+        public string OrderType;
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,6 +72,12 @@ namespace RMS.View
         private void b_Click(object sender, EventArgs e)
         {
             Guna.UI2.WinForms.Guna2Button b = (Guna.UI2.WinForms.Guna2Button)sender;
+            if (b.Text == "All Categories")
+            {
+                txtSearch.Text = "1";
+                txtSearch.Text = "";
+                return;
+            }
             foreach (var item in ProductPanel.Controls)
             {
                 var pro = (ucProduct)item;
@@ -167,6 +176,41 @@ namespace RMS.View
 
             lblTotal.Text = tot.ToString("N2");
 
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            guna2DataGridView1.Rows.Clear();
+            MainID = 0;
+            lblTable.Text = "00";
+        }
+
+        private void btnDelivery_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            OrderType = "Delivery";
+        }
+
+        private void btnTake_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            OrderType = "Take Away";
+        }
+
+        private void btnDin_Click(object sender, EventArgs e)
+        {
+            // need to create form for table selcetion and waiter selection
+            
         }
     }
 }
