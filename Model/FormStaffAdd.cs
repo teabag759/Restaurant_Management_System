@@ -33,7 +33,7 @@ namespace RMS.Model
             {
                 qry = "Insert into Staff Values(@Name, @phone, @role)";
             }
-            else  // else
+            else  // update
             {
                 qry = "Update Staff Set sName = @Name, sPhone = @phone, sRole = @role where staffID = @id";
             }

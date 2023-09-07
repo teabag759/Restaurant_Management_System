@@ -35,6 +35,7 @@
             // label1
             // 
             this.label1.Size = new System.Drawing.Size(116, 25);
+            this.label1.TabIndex = 1;
             this.label1.Text = "Table details";
             // 
             // txtName
@@ -83,6 +84,6 @@
         #endregion
 
         public Guna.UI2.WinForms.Guna2TextBox txtName;
-        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label2;
     }
 }

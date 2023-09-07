@@ -30,9 +30,9 @@
         {
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtImage = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtImage)).BeginInit();
@@ -60,18 +60,12 @@
             this.panel1.Size = new System.Drawing.Size(192, 73);
             this.panel1.TabIndex = 1;
             // 
-            // txtImage
+            // guna2Separator1
             // 
-            this.txtImage.Image = global::RMS.Properties.Resources.Paeya;
-            this.txtImage.ImageRotate = 0F;
-            this.txtImage.Location = new System.Drawing.Point(32, 3);
-            this.txtImage.Name = "txtImage";
-            this.txtImage.Size = new System.Drawing.Size(135, 127);
-            this.txtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.txtImage.TabIndex = 0;
-            this.txtImage.TabStop = false;
-            this.txtImage.UseTransparentBackground = true;
-            this.txtImage.Click += new System.EventHandler(this.txtImage_Click);
+            this.guna2Separator1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(257, 10);
+            this.guna2Separator1.TabIndex = 2;
             // 
             // lblName
             // 
@@ -84,12 +78,18 @@
             this.lblName.Text = "Product Name";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2Separator1
+            // txtImage
             // 
-            this.guna2Separator1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(257, 10);
-            this.guna2Separator1.TabIndex = 2;
+            this.txtImage.Image = global::RMS.Properties.Resources.Paeya;
+            this.txtImage.ImageRotate = 0F;
+            this.txtImage.Location = new System.Drawing.Point(32, 14);
+            this.txtImage.Name = "txtImage";
+            this.txtImage.Size = new System.Drawing.Size(135, 116);
+            this.txtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.txtImage.TabIndex = 0;
+            this.txtImage.TabStop = false;
+            this.txtImage.UseTransparentBackground = true;
+            this.txtImage.Click += new System.EventHandler(this.txtImage_Click);
             // 
             // ucProduct
             // 
