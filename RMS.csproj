@@ -71,6 +71,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
+    <Compile Include="Model\FormBillList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\FormBillList.Designer.cs">
+      <DependentUpon>FormBillList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\FormCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,12 @@
     <Compile Include="View\FormTableView.Designer.cs">
       <DependentUpon>FormTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormKitchenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormKitchenView.Designer.cs">
+      <DependentUpon>FormKitchenView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Model\FormPOS.resx">
       <DependentUpon>FormPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormKitchenView.resx">
+      <DependentUpon>FormKitchenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormProductView.resx">
       <DependentUpon>FormProductView.cs</DependentUpon>

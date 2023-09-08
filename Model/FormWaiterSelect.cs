@@ -21,7 +21,7 @@ namespace RMS.Model
 
         private void FormWaiterSelect_Load(object sender, EventArgs e)
         {
-            string qry = "Select * from staff where sRole Like 'Waiter";
+            string qry = "Select * from staff where sRole Like 'Waiter'";
             SqlCommand cmd = new SqlCommand(qry, MainClass.con);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -38,6 +38,7 @@ namespace RMS.Model
 
                 // event for click
                 b.Click += new EventHandler(b_Click);
+                flowLayoutPanel1.Controls.Add(b);
             }
         }
 

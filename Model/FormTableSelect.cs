@@ -39,6 +39,7 @@ namespace RMS.Model
 
                 // event for click
                 b.Click += new EventHandler(b_Click);
+                flowLayoutPanel1.Controls.Add(b);
             }
         }
 

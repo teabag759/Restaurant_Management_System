@@ -50,10 +50,9 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 135);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 349);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 345);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // guna2Panel2

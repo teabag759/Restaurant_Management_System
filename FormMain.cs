@@ -82,5 +82,10 @@ namespace RMS
             FormPOS frm = new FormPOS();
             frm.Show();
         }
+
+        private void btnKitchen_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormKitchenView());
+        }
     }
 }
