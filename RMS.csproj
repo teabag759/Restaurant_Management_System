@@ -356,5 +356,8 @@
   <ItemGroup>
     <Folder Include="Resources\ProductPics\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\receipt02.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

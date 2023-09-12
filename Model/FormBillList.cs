@@ -23,6 +23,7 @@ namespace RMS.Model
 
         private void FormBillList_Load(object sender, EventArgs e)
         {
+            guna2PictureBox1.Image = RMS.Properties.Resources.receipt02;
             LoadData();
         }
 
