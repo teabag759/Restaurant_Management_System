@@ -25,7 +25,7 @@ namespace RMS.View
         }
 
         public int MainID = 0;
-        public string OrderType;
+        public string OrderType = "";
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -330,6 +330,8 @@ namespace RMS.View
 
             
         }
+
+
         public int id = 0;
 
         private void btnBill_Click(object sender, EventArgs e)
@@ -340,6 +342,7 @@ namespace RMS.View
             if (frm.MainID > 0)
             {
                 id = frm.MainID;
+                MainID = frm.MainID;
                 LoadEntries();
             }
         }
@@ -356,20 +359,160 @@ namespace RMS.View
             SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
             da2.Fill(dt2);
 
+            if (dt2.Rows[0]["orderType"].ToString() == "Delivery")
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else if (dt2.Rows[0]["orderType"].ToString() == "Take away")
+            {
+                btnTake.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else
+            {
+                btnDin.Checked = true;
+                lblWaiter.Visible = true;
+                lblTable.Visible = true;
+            }
+
+
             guna2DataGridView1.Rows.Clear();
 
             foreach (DataRow item in dt2.Rows)
             {
+
+                lblTable.Text = item["TableName"].ToString();
+                lblWaiter.Text = item["WaiterName"].ToString();
+
                 // 오타 유의 "DetalID"임 ㅜㅠ
                 string detailid = item["DetalID"].ToString();
+                string proName = item["pName"].ToString();
                 string proid = item["proID"].ToString();
                 string qty = item["qty"].ToString();
                 string price = item["price"].ToString();
                 string amount = item["amount"].ToString();
 
-                object[] obj = { 0, detailid, proid, qty, price, amount };
+                object[] obj = { 0, detailid, proName, proid, qty, price, amount };
                 guna2DataGridView1.Rows.Add(obj);
             }
+
+            GetTotal();
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            FormCheckOut frm = new FormCheckOut();
+            frm.MainID = id;
+            frm.amt = Convert.ToDouble(lblTotal.Text);
+            MainClass.BlurBackground(frm);
+
+            MainID = 0;
+            guna2DataGridView1.Rows.Clear();
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            lblTable.Text = "00";
+
+        }
+
+        private void btnHold_Click(object sender, EventArgs e)
+        {
+            // Save the data in database
+
+            string qry1 = ""; // Main Table
+            string qry2 = "";
+
+            int detailID = 0;
+
+            if (OrderType == "")    //Insert
+            {
+                guna2MessageDialog1.Show("Please select order type");
+                return;
+            }
+
+            if (MainID == 0)    //Insert
+            {
+                qry1 = @"Insert into tblMain Values(@aDate, @aTime, @TableName, 
+                                @WaiterName, @status, @orderType, @total, @received, @change);
+                                Select SCOPE_IDENTITY()";
+                //this line will get recent add id value
+            }
+
+            else // Update
+            {
+                qry1 = @"Update tblMain Set status = @status, 
+                                total = @total, received = @received, 
+                                change = @change where MainID = @ID";
+            }
+
+            //Hashtable ht = new Hashtable();
+
+            SqlCommand cmd = new SqlCommand(qry1, MainClass.con);
+            cmd.Parameters.AddWithValue("@ID", MainID);
+            cmd.Parameters.AddWithValue("@aDate", Convert.ToDateTime(DateTime.Now.Date));
+            cmd.Parameters.AddWithValue("@aTime", DateTime.Now.ToShortTimeString());
+            cmd.Parameters.AddWithValue("@TableName", lblTable.Text);
+            cmd.Parameters.AddWithValue("@WaiterName", lblWaiter.Text);
+            cmd.Parameters.AddWithValue("@status", "Hold");
+            cmd.Parameters.AddWithValue("@orderType", OrderType);
+            cmd.Parameters.AddWithValue("@total", Convert.ToDouble(lblTotal.Text));  // as we only saving data for kitchen value will update when pyment received
+            cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0));
+            cmd.Parameters.AddWithValue("@change", Convert.ToDouble(0));
+
+
+            if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
+            if (MainID == 0) { MainID = Convert.ToInt32(cmd.ExecuteScalar()); } else { cmd.ExecuteNonQuery(); }
+            if (MainClass.con.State == ConnectionState.Open) { MainClass.con.Close(); }
+
+
+            foreach (DataGridViewRow row in guna2DataGridView1.Rows)
+            {
+                detailID = Convert.ToInt32(row.Cells["dgvid"].Value);
+
+                if (detailID == 0)  // insert
+                {
+                    qry2 = @"Insert into tblDetails Values(@MainID, @proID, @qty, @price, @amount);
+                                Select SCOPE_IDENTITY()";
+                }
+
+                else // Update
+                {
+                    qry2 = @"Update tblMain Set MainID = @MainID, proID = @proID, qty = @qty, 
+                                price = @price, amount = @amount where MainID = @ID";
+                }
+
+                SqlCommand cmd2 = new SqlCommand(qry2, MainClass.con);
+                cmd2.Parameters.AddWithValue("@ID", detailID);
+                cmd2.Parameters.AddWithValue("@MainID", MainID);
+                cmd2.Parameters.AddWithValue("@proID", Convert.ToInt32(row.Cells["dgvproID"].Value));
+                cmd2.Parameters.AddWithValue("@qty", Convert.ToInt32(row.Cells["dgvQty"].Value));
+                cmd2.Parameters.AddWithValue("@price", Convert.ToDouble(row.Cells["dgvPrice"].Value));
+                cmd2.Parameters.AddWithValue("@amount", Convert.ToDouble(row.Cells["dgvAmount"].Value));
+
+
+                if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
+                cmd2.ExecuteNonQuery();
+                if (MainClass.con.State == ConnectionState.Open) { MainClass.con.Close(); }
+
+            }
+
+            guna2MessageDialog1.Show("Saved Sucessfully");
+            MainID = 0;
+            detailID = 0;
+            guna2DataGridView1.Rows.Clear();
+
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            lblTable.Text = "00";
+
+
+        
         }
     }
 
