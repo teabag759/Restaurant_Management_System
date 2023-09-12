@@ -178,6 +178,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Model\FormBillList.resx">
+      <DependentUpon>FormBillList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model\FormCategoryAdd.resx">
       <DependentUpon>FormCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>

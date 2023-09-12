@@ -31,6 +31,7 @@ namespace RMS.View
             SqlCommand cmd1 = new SqlCommand(qry1, MainClass.con);
             DataTable dt1 = new DataTable(); 
             SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+            //cmd1.CommandType = CommandType.Text;
             da1.Fill(dt1);
 
             FlowLayoutPanel p1;
@@ -46,6 +47,7 @@ namespace RMS.View
                 p1.Margin = new Padding(10, 10, 10, 10);
 
                 FlowLayoutPanel p2 = new FlowLayoutPanel();  
+
                 p2 = new FlowLayoutPanel();
                 p2.BackColor = Color.FromArgb(50, 55, 89);
                 p2.AutoSize = true;
@@ -86,6 +88,7 @@ namespace RMS.View
                 p2.Controls.Add(lb4);
 
                 p1.Controls.Add(p2);
+                //flowLayoutPanel1.Controls.Add(p1); ;
 
 
                 // now add products 
@@ -100,12 +103,13 @@ namespace RMS.View
                 SqlCommand cmd2 = new SqlCommand(qry2, MainClass.con);
                 DataTable dt2 = new DataTable();
                 SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+                //cmd2.CommandType = CommandType.Text;
                 da2.Fill(dt2);
 
                 for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     Label lb5 = new Label();
-                    lb5.ForeColor = Color.White;
+                    lb5.ForeColor = Color.Black;
                     lb5.Margin = new Padding(10, 5, 3, 0);
                     lb5.AutoSize = true;
 
@@ -127,8 +131,8 @@ namespace RMS.View
                 b.Click += new EventHandler(b_click);
                 p1.Controls.Add (b);
 
-
                 flowLayoutPanel1.Controls.Add(p1); ;
+
             }
 
 

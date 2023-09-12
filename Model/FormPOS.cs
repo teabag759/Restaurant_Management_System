@@ -253,14 +253,16 @@ namespace RMS.View
 
             if (MainID == 0)    //Insert
             {
-                qry1 = @"Insert into tblMain Values(@aDate, @aTime, @TableName, @WaiterName, @status, @orderType, @total, @received, @change);
+                qry1 = @"Insert into tblMain Values(@aDate, @aTime, @TableName, 
+                                @WaiterName, @status, @orderType, @total, @received, @change);
                                 Select SCOPE_IDENTITY()";
                 //this line will get recent add id value
             }
 
             else // Update
             {
-                qry1 = @"Update tblMain Set status = @status, total = @total, received = @received, 
+                qry1 = @"Update tblMain Set status = @status, 
+                                total = @total, received = @received, 
                                 change = @change where MainID = @ID";
             }
 
@@ -297,7 +299,7 @@ namespace RMS.View
                 else // Update
                 {
                     qry2 = @"Update tblMain Set MainID = @MainID, proID = @proID, qty = @qty, 
-                                price = @price, amount = @amount where detailID = @ID";
+                                price = @price, amount = @amount where MainID = @ID";
                 }
 
                 SqlCommand cmd2 = new SqlCommand(qry2, MainClass.con);
@@ -313,6 +315,8 @@ namespace RMS.View
                 cmd2.ExecuteNonQuery(); 
                 if (MainClass.con.State == ConnectionState.Open)  { MainClass.con.Close(); }
 
+            }
+
                 guna2MessageDialog1.Show("Saved Sucessfully");
                 MainID = 0;
                 detailID = 0;
@@ -324,13 +328,49 @@ namespace RMS.View
                 lblWaiter.Visible = false;
                 lblTable.Text = "00";
 
-            }
+            
         }
+        public int id = 0;
 
         private void btnBill_Click(object sender, EventArgs e)
         {
-            MainClass.BlurBackground.
+            FormBillList frm = new FormBillList();
+            MainClass.BlurBackground(frm);
+
+            if (frm.MainID > 0)
+            {
+                id = frm.MainID;
+                LoadEntries();
+            }
+        }
+
+        private void LoadEntries()
+        {
+            string qry = @"Select * from tblMain m
+                                    inner join tblDetails d on m.MainID = d.MainID
+                                    inner join products p on p.pID = d.proID
+                                        where m.MainID = " + id + "";
+
+            SqlCommand cmd2 = new SqlCommand(qry, MainClass.con);
+            DataTable dt2 = new DataTable();
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+            da2.Fill(dt2);
+
+            guna2DataGridView1.Rows.Clear();
+
+            foreach (DataRow item in dt2.Rows)
+            {
+                // 오타 유의 "DetalID"임 ㅜㅠ
+                string detailid = item["DetalID"].ToString();
+                string proid = item["proID"].ToString();
+                string qty = item["qty"].ToString();
+                string price = item["price"].ToString();
+                string amount = item["amount"].ToString();
+
+                object[] obj = { 0, detailid, proid, qty, price, amount };
+                guna2DataGridView1.Rows.Add(obj);
+            }
         }
     }
- 
+
 }
