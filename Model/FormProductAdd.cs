@@ -96,7 +96,7 @@ namespace RMS.Model
                 txtPrice.Text = "";
                 cbCategory.SelectedIndex = 0;
                 cbCategory.SelectedIndex = -1;
-                txtImage.Image = RMS.Properties.Resources.ProductPics;
+                //txtImage.Image = RMS.Properties.Resources.ProductPics;
                 txtName.Focus();
             }
         }

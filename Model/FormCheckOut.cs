@@ -21,7 +21,7 @@ namespace RMS.Model
 
         private void FormCheckOut_Load(object sender, EventArgs e)
         {
-            this.guna2PictureBox1.Image = RMS.Properties.Resources.receipt;
+            this.guna2PictureBox1.Image = RMS.Properties.Resources.receipt02;
 
             txtBillAmount.Text = amt.ToString();    
 

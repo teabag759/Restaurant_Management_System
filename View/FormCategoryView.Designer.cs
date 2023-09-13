@@ -45,6 +45,7 @@
             this.btnAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAdd.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAdd.Image = global::RMS.Properties.Resources.add;
             this.btnAdd.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
             this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(55, 55);
             // 

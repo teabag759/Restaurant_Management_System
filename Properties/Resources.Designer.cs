@@ -10,9 +10,8 @@
 
 namespace RMS.Properties {
     using System;
-    using System.Drawing;
-
-
+    
+    
     /// <summary>
     ///   지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
     /// </summary>
@@ -32,9 +31,7 @@ namespace RMS.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-
-        public static Image ProductPics { get; internal set; }
-
+        
         /// <summary>
         ///   이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
         /// </summary>
@@ -119,6 +116,16 @@ namespace RMS.Properties {
         internal static System.Drawing.Bitmap chef {
             get {
                 object obj = ResourceManager.GetObject("chef", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap customer {
+            get {
+                object obj = ResourceManager.GetObject("customer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -329,6 +336,16 @@ namespace RMS.Properties {
         internal static System.Drawing.Bitmap receipt {
             get {
                 object obj = ResourceManager.GetObject("receipt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap receipt02 {
+            get {
+                object obj = ResourceManager.GetObject("receipt02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

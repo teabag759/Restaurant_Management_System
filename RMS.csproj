@@ -71,6 +71,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
+    <Compile Include="Model\FormAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\FormAddCustomer.Designer.cs">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\FormBillList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\FormAddCustomer.resx">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\FormBillList.resx">
       <DependentUpon>FormBillList.cs</DependentUpon>
@@ -366,7 +375,10 @@
     <Folder Include="Resources\ProductPics\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\receipt_2.png" />
+    <None Include="Resources\receipt02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

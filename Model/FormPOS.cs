@@ -26,6 +26,10 @@ namespace RMS.View
 
         public int MainID = 0;
         public string OrderType = "";
+        public int driverID = 0;
+        public string customerName = "";
+        public string customerPhone = "";
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -39,6 +43,7 @@ namespace RMS.View
 
             ProductPanel.Controls.Clear();
             LoadProducts();
+
         }
 
         private void AddCategory()
@@ -188,7 +193,7 @@ namespace RMS.View
             lblWaiter.Visible = false;
             guna2DataGridView1.Rows.Clear();
             MainID = 0;
-            lblTable.Text = "00";
+            lblTotal.Text = "00";
         }
 
         private void btnDelivery_Click(object sender, EventArgs e)
@@ -198,6 +203,20 @@ namespace RMS.View
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Delivery";
+
+            FormAddCustomer frm = new FormAddCustomer();
+            frm.MainID = MainID;
+            frm.orderType = OrderType;
+            MainClass.BlurBackground(frm);
+
+            if (frm.txtName.Text != "")     // as take away did not have driver info
+            {
+                driverID = frm.driverID;
+                lblDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text + " Driver: " + frm.cbDriver.Text;
+                lblDriverName.Visible = true;
+                customerName = frm.txtName.Text;
+                customerPhone = frm.txtPhone.Text;
+            }
         }
 
         private void btnTake_Click(object sender, EventArgs e)
@@ -207,11 +226,26 @@ namespace RMS.View
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Take Away";
+
+            FormAddCustomer frm = new FormAddCustomer();
+            frm.MainID = MainID;
+            frm.orderType = OrderType;  
+            MainClass.BlurBackground(frm);
+
+            if (frm.txtName.Text != "")     // as take away did not have driver info
+            { 
+                driverID = frm.driverID;
+                lblDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text;
+                lblDriverName.Visible= true;
+                customerName = frm.txtName.Text;
+                customerPhone = frm.txtPhone.Text;
+            }
         }
 
         private void btnDin_Click(object sender, EventArgs e)
         {
             OrderType = "Din In";
+            lblTable.Visible = false;
             // need to create form for table selcetion and waiter selection
             FormTableSelect frm = new FormTableSelect();
             MainClass.BlurBackground(frm);
@@ -242,9 +276,11 @@ namespace RMS.View
             }
         }
 
+
         private void btnKOT_Click(object sender, EventArgs e)
         {
             // Save the data in database
+            //need to add feild to table to store additional info
 
             string qry1 = ""; // Main Table
             string qry2 = "";
@@ -254,7 +290,7 @@ namespace RMS.View
             if (MainID == 0)    //Insert
             {
                 qry1 = @"Insert into tblMain Values(@aDate, @aTime, @TableName, 
-                                @WaiterName, @status, @orderType, @total, @received, @change);
+                                @WaiterName, @status, @orderType, @total, @received, @change, @driverID, @CustName, @CustPhone);
                                 Select SCOPE_IDENTITY()";
                 //this line will get recent add id value
             }
@@ -279,6 +315,9 @@ namespace RMS.View
             cmd.Parameters.AddWithValue("@total", Convert.ToDouble(lblTotal.Text));  // as we only saving data for kitchen value will update when pyment received
             cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0));
             cmd.Parameters.AddWithValue("@change", Convert.ToDouble(0));
+            cmd.Parameters.AddWithValue("@driverID", driverID);
+            cmd.Parameters.AddWithValue("@CustName", customerName);
+            cmd.Parameters.AddWithValue("@CustPhone", customerPhone);
 
 
             if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
@@ -326,7 +365,8 @@ namespace RMS.View
                 lblWaiter.Text = "";
                 lblTable.Visible = false;
                 lblWaiter.Visible = false;
-                lblTable.Text = "00";
+                lblTotal.Text = "00";
+                lblDriverName.Text = "";
 
             
         }
@@ -415,7 +455,7 @@ namespace RMS.View
             lblWaiter.Text = "";
             lblTable.Visible = false;
             lblWaiter.Visible = false;
-            lblTable.Text = "00";
+            lblTotal.Text = "00";
 
         }
 
@@ -437,7 +477,7 @@ namespace RMS.View
             if (MainID == 0)    //Insert
             {
                 qry1 = @"Insert into tblMain Values(@aDate, @aTime, @TableName, 
-                                @WaiterName, @status, @orderType, @total, @received, @change);
+                                @WaiterName, @status, @orderType, @total, @received, @change, @driverID, @CustName, @CustPhone);
                                 Select SCOPE_IDENTITY()";
                 //this line will get recent add id value
             }
@@ -462,6 +502,9 @@ namespace RMS.View
             cmd.Parameters.AddWithValue("@total", Convert.ToDouble(lblTotal.Text));  // as we only saving data for kitchen value will update when pyment received
             cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0));
             cmd.Parameters.AddWithValue("@change", Convert.ToDouble(0));
+            cmd.Parameters.AddWithValue("@driverID", driverID);
+            cmd.Parameters.AddWithValue("@CustName", customerName);
+            cmd.Parameters.AddWithValue("@CustPhone", customerPhone);
 
 
             if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
@@ -509,7 +552,9 @@ namespace RMS.View
             lblWaiter.Text = "";
             lblTable.Visible = false;
             lblWaiter.Visible = false;
-            lblTable.Text = "00";
+            lblTotal.Text = "00";
+            lblDriverName.Text = "";
+
 
 
         
