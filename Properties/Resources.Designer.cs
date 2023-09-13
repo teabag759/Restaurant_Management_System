@@ -363,6 +363,16 @@ namespace RMS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap receipt021 {
+            get {
+                object obj = ResourceManager.GetObject("receipt021", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap recycle_symbol_of_three_arrows {
             get {
                 object obj = ResourceManager.GetObject("recycle-symbol-of-three-arrows", resourceCulture);

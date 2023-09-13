@@ -87,5 +87,10 @@ namespace RMS
         {
             AddControls(new View.FormKitchenView());
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            AddControls(new View.FormReports());
+        }
     }
 }
