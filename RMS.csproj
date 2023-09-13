@@ -372,6 +372,7 @@
     <None Include="Resources\Paeya.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Reports\" />
     <Folder Include="Resources\ProductPics\" />
   </ItemGroup>
   <ItemGroup>
@@ -379,6 +380,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
